@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
+import useSignup from '../../components/hooks/useSignup';
 
 import GenderCheckbox from './GenderCheckbox'
 
@@ -12,18 +13,20 @@ const SignUp = () => {
         gender: "",
     });
 
+    const { loading, signup } = useSignup();
+
     const handleCheckboxChange = (gender) => {
         setInPuts({ ...inputs, gender });
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(inputs);
+        await signup(inputs);
     }
 
-    useEffect(() => {
-        console.log({ "from useEffect": inputs.gender });
-    }, [inputs.gender])
+    // useEffect(() => {
+    //     console.log({ "from useEffect": inputs.gender });
+    // }, [inputs.gender])
 
     return (
         <div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
