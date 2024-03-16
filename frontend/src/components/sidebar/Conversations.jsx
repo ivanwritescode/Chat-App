@@ -1,5 +1,5 @@
 import Conversation from "./Conversation";
-import useGetConversations from "../hooks/useGetConversations";
+import useGetConversations from "../../hooks/useGetConversations";
 import { getRandomEmoji } from "../../utils/emojis";
 
 const Conversations = () => {
